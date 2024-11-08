@@ -1,0 +1,27 @@
+// Body 
+$body_font_family: 'Hanken Grotesk', sans-serif;
+$body_p_font_size: 18px;
+
+// Main
+$main_box_shadow: 5px 25px 50px 0px rgba(0, 0, 0, 0.187);
+
+// Left Side
+$left_side_bg_color: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+$title_left_color: hsl(241, 100%, 89%);
+$circle_bg_color: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0)); 
+$circle_and_result_p: hsl(241, 100%, 89%); 
+
+// Right Side
+$title_right_side_color: hsl(224, 30%, 27%);
+$button_bg_color: hsl(224, 30%, 27%);
+$button_hover_bg_color: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+$summary_characteristics_p_color: hsl(224, 30%, 27%);
+$summary_characteristics_span_color: hsl(241, 100%, 89%);
+
+// Mixin para diminuir o código
+@mixin display($display, $justify_content, $align_items, $flex_direction) {
+    display: $display;
+    justify-content: $justify_content;
+    align-items: $align_items;
+    flex-direction: $flex_direction;
+}

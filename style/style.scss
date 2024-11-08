@@ -1,10 +1,13 @@
 @import 'animations';
+@import 'variables';
+
+// Mixin de display -> @include display(display, justify-content, align-items, flex-direction);
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: $body_font_family;
 }
 
 body {
@@ -14,7 +17,7 @@ body {
     align-items: center;
 
     p {
-        font-size: 18px;
+        font-size: $body_p_font_size;
     }
 
     main {
@@ -22,26 +25,23 @@ body {
         height: 400px;
         width: 600px;
         display: flex;
-        box-shadow: 5px 25px 50px 0px rgba(0, 0, 0, 0.187);
+        box-shadow: $main_box_shadow;
         animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
         .left_side {
-            background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+            background: $left_side_bg_color;
             border-radius: 20px;
             width: 50%;
 
             .title_left_side {
                 height: 15%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: hsl(241, 100%, 89%);
+                @include display(flex, center, center, row);
+                color: $title_left_color;
             }
 
             .result_circle {
                 padding-top: 15px;
                 display: flex;
-                align-items: start;
                 justify-content: center;
                 height: 55%;
             }
@@ -51,11 +51,8 @@ body {
             height: 150px;
             width: 150px;
             border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+            @include display(flex, center, center, column);
+            background: $circle_bg_color;
             animation: swing-in-top-fwd 2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
             animation-delay: .4s;
 
@@ -67,17 +64,14 @@ body {
 
         .circle p,
         .result_p p {
-            color: hsl(241, 100%, 89%);
+            color: $circle_and_result_p;
         }
 
         .result_text {
             height: 30%;
             gap: 10px;
             padding-bottom: 70px;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
+            @include display(flex, center, center, column);
 
             h2 {
                 padding-bottom: 5px;
@@ -96,29 +90,24 @@ body {
             width: 50%;
             background-color: #fff;
             border-radius: 0px 20px 20px 0px;
-            overflow: hidden;
-
+    
             .title_right_side {
                 height: 15%;
                 display: flex;
                 align-items: center;
                 text-indent: 35px;
-                color: hsl(224, 30%, 27%);
+                color: $title_right_side_color;
             }
 
             #summary_characteristics {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                @include display(flex, center, center, column);
                 gap: 20px;
                 height: 65%;
 
                 section {
                     width: 80%;
                     height: 18%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                    @include display(flex, flex-start, center, space-between);
                     border-radius: 10px;
                     animation: swing-in-top-fwd 2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
                     animation-delay: 1s;
@@ -126,25 +115,21 @@ body {
                     .text {
                         height: 100%;
                         width: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-evenly;
+                        @include display(flex, space-evenly, center, row);
                     }
 
                     .numbers {
                         height: 100%;
                         width: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-evenly;
+                        @include display(flex, space-evenly, center, row);
 
                         span {
-                            color: hsl(224, 30%, 27%);
+                            color: summary_characteristics_p_color;
                             font-weight: 700;
                         }
 
                         p {
-                            color: hsl(241, 100%, 89%);    
+                            color: $summary_characteristics_p_color;
                         }
                     }
                 }
@@ -153,14 +138,12 @@ body {
             .button_container {
                 width: 100%;
                 height: 20%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include display(flex, center, center, row);
 
                 button {
                     cursor: pointer;
                     color: #fff;
-                    background-color: hsl(224, 30%, 27%);
+                    background-color: $button_bg_color;
                     width: 80%;
                     height: 55%;
                     border-radius: 30px;
@@ -169,10 +152,29 @@ body {
                     animation-delay: 1s;
 
                     &:hover {
-                        background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+                        background: $button_hover_bg_color;
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        flex-direction: column;
+        width: 100% !important;
+        height: 100% !important;
+
+        .left_side {
+            width: 100% !important;
+            height: 40% !important;
+            border-radius: 0 0 20px 20px !important;
+        }
+
+        .right_side {
+            width: 100% !important;
+            height: 60% !important;
         }
     }
 }

@@ -1,6 +1,6 @@
 fetch('./data.json')
-    .then (response => response.json())
-    .then (data => {
+    .then(response => response.json())
+    .then(data => {
         const summary_characteristics = document.getElementById("summary_characteristics");
 
         data.forEach(item => {
